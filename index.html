@@ -9,9 +9,11 @@
         <link rel="stylesheet" href="index.js">
     </head>
     <body>
-        <form>
+      <main>
+        <p>Send Email</p>
+        <form Class="contact-form" action="contactform.php" method="post">
             <label for="title">Document Title :</label>
-            <input type="text" name="title" id="title"><br>
+            <input type="text" name="title" id="title" placeholder="Document Title"><br>
             <h3>Due Date</h3>
             <input type="text" data-role="calendarpicker"  data-cls-calendar="compact"><i class="fas fa-calendar-alt"></i><br>
             <h3>Industry</h3>
@@ -27,9 +29,8 @@
             <label for="industry5"> utility</label><br>
             <label for="other">Other:</label><br>
             <input type="text" id="otherindusrty" name="otherindustry"><br>
-          </form>
-
-          <form>
+         
+       
             <h3>Solutions</h3>
             <input type="checkbox" id="solution1" name="solution1" value="Content Management System">
             <label for="solution1"> Content management Sysytem</label><br>
@@ -53,8 +54,7 @@
             <label for="solution10"> Ticketing System</label><br>
             <label for="other">Other:</label><br>
             <input type="text" id="otherindusrty" name="otherindustry"><br>
-          </form>
-          <form>
+          
             <h3>Technology Solutions</h3>
             <input type="checkbox" id="technology1" name="technology1" value="Power Automate">
             <label for="technology1"> Power Automate</label><br>
@@ -84,22 +84,19 @@
             <label for="technology13"> Procore</label><br>
             <label for="other">Other:</label><br>
             <input type="text" id="otherindusrty" name="otherindustry"><br>
-          </form>
-          <form>
+        
             <label for="link">Link to Document</label>
-            <input type="link" name="link" id="link"><br>
-          </form>
-          <form>
+            <br><input type="link" name="link" id="link"></br>
+          
               <h3>Requestor Name </h3>
             <label for="name">Name</label>
             <input type="name" name="name" id="name"><br>
-          </form>
-          <form>
+          
             <h3>Additonal Notes </h3>
-            <span>  <textarea cols="5" rows="10"></textarea></span>
+            <textarea cols="5" rows="10" placeholder="additonal notes"></textarea>
             <input type="submit" value="Submit">
         </form>
-        
+      </main>
         <script src="" async defer></script>
     </body>
 </html>
