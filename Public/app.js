@@ -1,8 +1,40 @@
-const express = require('express');
+const contactForm = document.querySelector('.contact-form');
+
+contactForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+
+  let formData = {
+    name: name.value,
+    email: email.value,
+    company: company.value,
+    message: message.value,
+  
+  }
+
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', '/');
+  xhr.setRequestHeader('content-type', 'application/json');
+  xhr.onload = function(){
+    console.log(xhr.responseText);
+    if(xhr.responseText == 'success'){
+      alert('Email Sent');
+      name.value = '';
+      email.value = '';
+      company.value = '';
+      message.value = '';
+    }else('Something Went Wrong')
+  }
+
+  xhr.send(JSON.stringify(formData));
+
+} )
+
+
+
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const path = require('path')
-const nodemailer = require('nodemailer');
+
 
 const app = express();
 
@@ -20,7 +52,7 @@ app.use(bodyParser.json());
 //app.use('/public', express.static(path.join(_dirname, 'public')));
 
 app.get('/', (req,res) =>{
-    res.render('contact');
+    res.render('Public');
 });
 
 app.post('/send', (req, res) =>{
@@ -40,7 +72,7 @@ app.post('/send', (req, res) =>{
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     host: "smtp.sendgrid.net",
-    port: 587,
+    port: 25.587,
     secure: false, // true for 465, false for other ports
     auth: {
       user: 'brentbowles111@yahoo.com', // generated ethereal user
@@ -51,7 +83,7 @@ app.post('/send', (req, res) =>{
   // send mail with defined transport object
   let info = await transporter.sendMail({
     from: '"nodemailer contact" <brentbowles111@yahoo.com>', // sender address
-    to: "bbowles@sileotech.com, tech@sileotech.com", // list of receivers
+    to: "bbowles@sileotech.com, brentbowles111@yahoo.com", // list of receivers
     subject: "Node request", // Subject line
     text: "Hello world?", // plain text body
     html: output, // html body
@@ -63,7 +95,7 @@ app.post('/send', (req, res) =>{
    res.render('contact', {msg:'email has been sent'})
 
 });
-app.listen(3001, () => console.log('server started...'));
+//app.listen(3001, () => console.log('server started...'));
 
 //let transporter = nodemailer.createTransport({
         //host: 'smtp.mailtrap.io',
